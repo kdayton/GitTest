@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dayton.clickatell.connector.create" default="finalize" basedir=".">
+    
+	<property name="outputfolder" location="./bin/"/>
+	<property name="project-name" location="dayton.clickatell.smsTest"/>
+
+	
+	<target name="cleanbuild" description="Clean build for the application">
+		<delete dir="${outputfolder}"/>
+		<mkdir dir="${outputfolder}"/>
+	</target>
+
+	  <target name ="makejar" description="Create a jar for the  dayton.clickatell.smsTest">
+	    <jar jarfile="dayton.clickatell.smsTest.jar" includes="*.class" basedir="bin"/>
+	  </target>
+
+	
+	<target name="finalize" description="Zips the archive data" depends="makejar">
+		<jar jarfile="${project-name}.jar" basedir="${outputfolder}"/>
+	    <copy file="${project-name}.jar" todir="${outputfolder}"/>
+		<delete file="${project-name}.jar"/>
+	</target>
+
+	
+</project>
